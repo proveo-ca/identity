@@ -1,0 +1,71 @@
+<style>
+  root {
+    FontName Padauk;
+    BackgroundColor #FAFAFA;
+  }
+  component {
+    BackgroundColor #4F3B83;
+    b1a8d4
+    BorderColor #64B5F6;
+    FontColor #FAFAFA;
+    FontSize 14;
+    RoundCorner 10;
+    Padding 8;
+    Shadowing 2;
+  }
+
+  node {
+    BackgroundColor #FAFAFA;
+    BorderColor #78909C;
+    FontSize 14;
+    RoundCorner 8;
+    Padding 10;
+    Shadowing 3;
+  }
+
+  database {
+    BackgroundColor #888;
+    BorderColor #66BB6A;
+    FontColor #FAFAFA;
+    FontSize 14;
+    RoundCorner 8;
+    Shadowing 2;
+  }
+
+  actor {
+    BackgroundColor #AA0A7D;
+    BorderColor #FF9800;
+    FontColor #AA0A7D;
+    FontSize 14;
+    RoundCorner 8;
+    Padding 6;
+  }
+  
+  queue {
+    BackgroundColor #CC9D69;
+    FontColor #FAFAFA;
+  }
+
+  arrow {
+    LineColor #444;
+    LineThickness 2;
+  }  
+
+  note {
+    BackgroundColor #AA0A7D;
+    BorderColor #FDD835;
+    FontColor #FAFAFA;
+  }
+  
+  cloud {
+    LineColor #4F3B83;
+  }
+  
+  frame {
+    LineColor #4F3B83;
+  }
+  
+  folder {
+    LineColor #CC9D69;
+  }
+</style>
