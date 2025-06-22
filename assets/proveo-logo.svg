@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1024 1024"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-label="Proveo mark – coloured">
+
+<!-- ───────────────────────────────
+     BRAND COLOURS
+     magenta      #cb159a
+     gold         #f2c633
+     deep-purple  #31176b
+     ─────────────────────────────── -->
+
+<defs>
+    <!-- Arrow shaft blends from deep-purple (base) to magenta (tip). -->
+    <linearGradient id="shaftGrad" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="20%"   stop-color="#31176b"/>
+        <stop offset="60%" stop-color="#cb159a"/>
+    </linearGradient>
+</defs>
+
+<!-- ░░░░  STEM  ░░░░ -->
+<rect x="535" y="345" width="65" height="570" rx="62" fill="#31176b"/>
+
+<!-- ░░░░  SLINGSHOT ARROW  ░░░░-->
+<!--
+   <polygon points="608,190 845,105 788,225"
+           fill="#cb159a"/>
+   <polygon points="675,165 845,105 808,295"
+         fill="#cb159a"/> -->
+// cb159a
+<!-- ░░░░  OUTER MAGENTA ORBIT  ░░░░ -->
+<ellipse cx="580" cy="505" rx="420" ry="235"
+         stroke="#cb159a" stroke-width="20" fill="none"
+         transform="rotate(-20 600 505)"/>
+
+<!-- planet on outer orbit -->
+<circle cx="825" cy="650" r="40"
+        fill="#cb159a"/>
+
+<!-- ░░░░  INNER GOLD ORBIT  ░░░░ -->
+<ellipse cx="550" cy="520" rx="270" ry="155"
+         stroke="#f2c633" stroke-width="20" fill="none"
+         transform="rotate(-20 550 520)"/>
+
+<!-- arrow-head -->
+<polygon points="645,190 845,125 808,295"
+         fill="#cb159a"/>
+<polygon points="640,190 740,225 808,300"
+         fill="#fafafa"/>
+<!-- shaft -->
+<path d="M575 400 L750 220"
+      stroke="url(#shaftGrad)"
+      stroke-width="56"
+      stroke-linecap="butt"
+      fill="none"/>
+
+<path d="
+      M M575 500
+      L 300 200
+      L 300 110
+      A 30 30 0 0 1
+        10 140
+      L 10 0
+      Z" fill="#31176b"/>
+<!-- primary gold star -->
+<circle cx="385" cy="655" r="60"
+        fill="#f2c633"/>
+
+<!-- (Optional) central purple planet tying bowl to full “P”.
+     Uncomment if you want it visible.
+<circle cx="550" cy="520" r="60" fill="#31176b"/>
+-->
+
+    <!-- deep-purple fill -->
+    <path d="M10 0
+           H30
+           V110
+           A30 30 0 0 1    10 140
+           V0
+           Z"
+          fill="#31176b"/>
+</svg>
