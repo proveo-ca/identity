@@ -33,16 +33,16 @@
   }
 
   actor {
-    BackgroundColor #CB159A;
+    BackgroundColor #AA0A7D;
     BorderColor #FF9800;
-    FontColor #CB159A;
+    FontColor #AA0A7D;
     FontSize 14;
     RoundCorner 8;
     Padding 6;
   }
 
   queue {
-    BackgroundColor #F2C633;
+    BackgroundColor #EFA63D;
     FontColor #121212;
   }
 
@@ -52,7 +52,7 @@
   }
 
   note {
-    BackgroundColor #CB159A;
+    BackgroundColor #AA0A7D;
     BorderColor #FDD835;
     FontColor #FAFAFA;
   }
@@ -66,12 +66,12 @@
   }
 
   folder {
-    LineColor #F2C633;
+    LineColor #EFA63D;
   }
 </style>
 
 !define to [thickness=3]
-!define err [#red]
-!define db [#gray]
-!define errLabel(x) <color:red><b>x</b></color>
-!define dbLabel(x) <color:gray><b>x</b></color>
+!define err [#E20024]
+!define db [#585858]
+!define errLabel(x) <color:#E20024><b>x</b></color>
+!define dbLabel(x) <color:#585858><b>x</b></color>

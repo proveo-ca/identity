@@ -13,8 +13,8 @@ frame "Main Colors" {
   rectangle " " as Gray #888888
   rectangle " " as White #FAFAFA
   rectangle " " as Main #31176B
-  rectangle " " as Alt #F2C633
-  rectangle " " as Accent #CB159A
+  rectangle " " as Alt #EFA63D
+  rectangle " " as Accent #AA0A7D
 }
 
 frame "Status" {
@@ -39,18 +39,18 @@ frame "Shades" {
     rectangle " " as Main4 #5D4395
   }
     
-  rectangle #F2C633 {
-    rectangle " " as Alt1 #A68002
-    rectangle " " as Alt2 #D2A60E
-    rectangle " " as Alt3 #FFD95A
-    rectangle " " as Alt4 #FFE383
+  rectangle #EFA63D {
+    rectangle " " as Alt1 #A76607
+    rectangle " " as Alt2 #D68715
+    rectangle " " as Alt3 #FFC063
+    rectangle " " as Alt4 #FFD18D
   }
   
-  rectangle #CB159A {
-    rectangle " " as Accent1 #8A0064
-    rectangle " " as Accent2 #B20081
-    rectangle " " as Accent3 #CB1599
-    rectangle " " as Accent4 #DE62BC
+  rectangle #AA0A7E {
+    rectangle " " as Accent1 #69004C
+    rectangle " " as Accent2 #870262
+    rectangle " " as Accent3 #B72D91
+    rectangle " " as Accent4 #C750A6
   }
 }
 

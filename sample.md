@@ -1,13 +1,9 @@
-Design a system for sending real-time toll payment notifications to users when their vehicles pass through toll booths. Assume vehicle detection and toll calculation are already handled by an upstream system, which sends events to your service.
+Design a system for sending real-time toll payment notifications to users when their vehicles pass through toll booths.
+Assume vehicle detection and toll calculation are already handled by an upstream system, which sends events to your
+service.
 
 The system must:
-- Receive toll charge events `(vehicle ID, timestamp, toll amount, location)`
-- Notify the user associated with the vehicle via email and/or SMS
-- Ensure at-least-once delivery of the notification
-- Persist the toll charge record for future referenceDesign a system for sending real-time toll payment notifications to users when their vehicles pass through toll booths. Assume vehicle detection and toll
-  calculation are already handled by an upstream system, which sends events to your service.
 
-The system must:
 - Receive toll charge events `(vehicle ID, timestamp, toll amount, location)`
 - Notify the user associated with the vehicle via email and/or SMS
 - Ensure at-least-once delivery of the notification
@@ -49,16 +45,16 @@ The system must:
   }
 
   actor {
-    BackgroundColor #CB159A;
+    BackgroundColor #AA0A7D;
     BorderColor #FF9800;
-    FontColor #CB159A;
+    FontColor #AA0A7D;
     FontSize 14;
     RoundCorner 8;
     Padding 6;
   }
 
   queue {
-    BackgroundColor #F2C633;
+    BackgroundColor #EFA63D;
     FontColor #121212;
   }
 
@@ -68,7 +64,7 @@ The system must:
   }
 
   note {
-    BackgroundColor #CB159A;
+    BackgroundColor #AA0A7D;
     BorderColor #FDD835;
     FontColor #FAFAFA;
   }
@@ -82,43 +78,51 @@ The system must:
   }
 
   folder {
-    LineColor #F2C633;
+    LineColor #EFA63D;
   }
 </style>
 
 !define to [thickness=3]
-!define err [#red]
-!define db [#gray]
-!define errLabel(x) <color:red><b>x</b></color>
-!define dbLabel(x) <color:gray><b>x</b></color>
+!define err [#E20024]
+!define db [#585858]
+!define errLabel(x) <color:#E20024><b>x</b></color>
+!define dbLabel(x) <color:#585858><b>x</b></color>
 
 actor Guest as G 
 actor Host as H
 
-
-node "Mobile Device" as UI {
+frame "Mobile Device" as UI {
     component App
     component Email
     component SMS
 } 
 node "Vehicle" as V
 node "REST Service" as API {
-    database "Primary" as DB
+  component "Validation Layer"
+  database "Primary" as DB
+}
+
+cloud "Upstream System" as US {
+  component "Vehicle Detection"
+  component "Toll Calculation"
 }
 
 cloud Microservices {
-    node "Vehicle Service" as VS {
-        component "Toll Charge Handler"
-    }
-    node "Notification Service" as NS
+  frame "Vehicle Services" as VS {
+    component "Toll Charge Handler"
+  }
+  frame "Notification Services" as NS {
+    component "SMS/Email Service"
+    component "Push Notifications"
+  }
 }
 
 cloud Monitoring as M {
-    node "Monitoring Service" {
-        component Telemetry
-        component Alerts
-        database "Logs Persistence"
-    }
+  frame "Monitoring Services" {
+    component Telemetry
+    component Alerts
+  }
+  database Logs
 }
 queue "Vehicle Events" as VQ
 queue "Notification Events" as NQ
@@ -128,24 +132,25 @@ frame "Dead Letter Queues" as DQ {
 }
 
 G -to> V  : " Triggers Events (in the Background)"
-V -to> VQ : "  TollEvent(vehicleId, time, amount, location)"
+V -to-> US : " Sends requests Upstream"
+US -to> VQ :  " TollEvent(vehicleId, time, amount, location)"
 VQ -to-> API: " Consume Event"
-API -to-> API: " Validates Event: Guest Reservation/time, etc"
+API -to> API: " Validates Event: Guest Reservation/time, etc"
 API -to--> VS : " Forward Event: Toll Charges"
+VS -[#gray]left-> API : dbLabel(" Persisting Toll Charges")
 VS -to-> NQ : " Enqueue Notification"
-NQ -to-> NS : " Broadcast Notification"
+NQ -to> NS : " Broadcast Notification"
 NS -to-> UI : " Receives Notification"
 API -err-> DQ : errLabel(" Event Validation Failed")
 NS -err-> DQ : errLabel("Failed Notifications")
-VS -[#gray]left-> API : dbLabel(" Persisting Toll Charges")
 API <--> DQ : " Retry strategies (e.g. fallback SMS, etc)"
 
 API <.db.> UI : dbLabel(" Sync State")
 API -err-> M : errLabel(" Error Reporting")
 UI -err-> M : errLabel(" Error Reporting")
 M <.db. DQ : dbLabel("Persists Errors")
-UI -to-> H : " Reads Notification"
+UI -to-> H
 
-note bottom of G: "Rents a Vehicle,\n drives in a highway"
-note bottom of H: "Reads \nNotification"
+note left of G: "Rents a Vehicle,\n drives in a highway"
+note top of H: "New \nNotification"
 ```
