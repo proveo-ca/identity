@@ -70,7 +70,7 @@
   }
 </style>
 
-!define to [thickness=3]
+!define mp [thickness=3]
 !define err [#E20024]
 !define db [#585858]
 !define errLabel(x) <color:#E20024><b>x</b></color>
