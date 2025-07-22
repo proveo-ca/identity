@@ -1,6 +1,91 @@
 ```plantuml
 @startuml
-!includeurl https://raw.githubusercontent.com/proveo-ca/identity/refs/heads/main/proveo.iuml
+!define COLOR_MAIN #005F7F
+!define COLOR_ALT #00BAC6
+!define COLOR_ACCENT #CBDB2A
+!define COLOR_ERROR #6E1100
+!define COLOR_SUCCESS #009532
+!define COLOR_GRAY #585858
+
+!define PATH_MAIN thickness=3
+!define PATH_COMMON thickness=1
+
+!define errorLabel(x) <color:#CB2000><b>x</b></color>
+!define successLabel(x) <color:#009532><b>x</b></color>
+!define dbLabel(x) <color:#585858><b>x</b></color>
+
+<style>
+
+  root {
+    FontName Padauk;
+    BackgroundColor #FAFAFA;
+  }
+  component {
+    BackgroundColor #005F7F;
+    b1a8d4
+    BorderColor #64B5F6;
+    FontColor #FAFAFA;
+    FontSize 14;
+    RoundCorner 10;
+    Padding 8;
+    Shadowing 2;
+  }
+
+  node {
+    BackgroundColor #FAFAFA;
+    BorderColor #78909C;
+    FontSize 14;
+    RoundCorner 8;
+    Padding 10;
+    Shadowing 3;
+  }
+
+  database {
+    BackgroundColor #888;
+    BorderColor #66BB6A;
+    FontColor #FAFAFA;
+    FontSize 14;
+    RoundCorner 8;
+    Shadowing 2;
+  }
+
+  actor {
+    BackgroundColor #CBDB2A;
+    BorderColor #FF9800;
+    FontColor #585858;
+    FontSize 14;
+    RoundCorner 8;
+    Padding 6;
+  }
+
+  queue {
+    BackgroundColor #CBDB2A;
+    FontColor #121212;
+  }
+
+  arrow {
+    LineColor #444;
+    LineThickness 2;
+  }
+
+  note {
+    BackgroundColor #585858;
+    BorderColor #121212;
+    FontColor #FAFAFA;
+  }
+
+  cloud {
+    LineColor #00BAC6;
+  }
+
+  frame {
+    LineColor #005F7F;
+  }
+
+  folder {
+    LineColor #00BAC6;
+  }
+</style>
 
 actor Guest as G 
 actor Host as H
@@ -60,25 +145,25 @@ frame "Dead Letter Queues" as DQ {
   queue "Notification Event DLQ" as NDQ
 }
 
-G -to> V  : " Triggers Events (in the Background)"
-V -to-> US : " Sends requests Upstream"
-US -to> VQ :  " TollEvent(vehicleId, time, amount, location)"
-VQ -to-> API: " Consume Event"
-API -to> API: " Validates Event: Guest Reservation/time, etc"
-API -to--> VS : " Forward Event: Toll Charges"
-VS -[#gray]left-> API : dbLabel(" Persisting Toll Charges")
-VS -to-> NQ : " Enqueue Notification"
-NQ -to> NS : " Broadcast Notification"
-NS -to-> UI : " Receives Notification"
-API -err-> DQ : errLabel(" Event Validation Failed")
-NS -err-> DQ : errLabel("Failed Notifications")
+G -[PATH_MAIN]> V  : " Triggers Events (in the Background)"
+V -[PATH_MAIN]-> US : " Sends requests Upstream"
+US -[PATH_MAIN]> VQ :  " TollEvent(vehicleId, time, amount, location)"
+VQ -[PATH_MAIN]-> API: " Consume Event"
+API -[PATH_MAIN]> API: " Validates Event: Guest Reservation/time, etc"
+API -[PATH_MAIN]--> VS : " Forward Event: Toll Charges"
+VS -[COLOR_GRAY]left-> API : dbLabel(" Persisting Toll Charges")
+VS -[PATH_MAIN]-> NQ : " Enqueue Notification"
+NQ -[PATH_MAIN]> NS : " Broadcast Notification"
+NS -[PATH_MAIN]-> UI : " Receives Notification"
+API -[COLOR_ERROR]-> DQ : errorLabel(" Event Validation Failed")
+NS -[COLOR_ERROR]-> DQ : errorLabel("Failed Notifications")
 API <--> DQ : " Retry strategies (e.g. fallback SMS, etc)"
 
-API <.db.> UI : dbLabel(" Sync State")
-API -err-> M : errLabel(" Error Reporting")
-UI -err-> M : errLabel(" Error Reporting")
-M <.db. DQ : dbLabel("Persists Errors")
-UI -to-> H
+API <.[COLOR_GRAY].> UI : dbLabel(" Sync State")
+API -[COLOR_ERROR]-> M : errorLabel(" Error Reporting")
+UI -[COLOR_ERROR]-> M : errorLabel(" Error Reporting")
+M <.[COLOR_GRAY]. DQ : dbLabel("Persists Errors")
+UI -[PATH_MAIN]-> H
 
 note left of G: "Rents a Vehicle,\n drives in a highway"
 note top of H: "New \nNotification"

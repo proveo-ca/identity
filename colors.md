@@ -10,16 +10,16 @@ frame "Main Colors" {
   rectangle " " as Black #181818
   rectangle " " as Gray #888888
   rectangle " " as White #FAFAFA
-  rectangle " " as Main #31176B
-  rectangle " " as Alt #EFA63D
-  rectangle " " as Accent #AA0A7D
+  rectangle " " as Main #005F7F
+  rectangle " " as Alt #00BAC6
+  rectangle " " as Accent #CBDB2A
 }
 
 frame "Status" {
-  rectangle " " as SuccessLight #B2BD2B
-  rectangle " " as SuccessDark #6D7600
-  rectangle " " as ErrorLight #F5435F
-  rectangle " " as ErrorDark #E20024
+  rectangle " " as SuccessLight #009532
+  rectangle " " as SuccessDark #00511B
+  rectangle " " as ErrorLight #CB2000
+  rectangle " " as ErrorDark #6E1100
 }
 
 frame "Shades" {
@@ -30,25 +30,25 @@ frame "Shades" {
     rectangle " " as Gray4 #E5E4E4
   }
     
-  rectangle #31176B {
-    rectangle " " as Main1 #130335
-    rectangle " " as Main2 #1F0852
-    rectangle " " as Main3 #452883
-    rectangle " " as Main4 #5D4395
+  rectangle #005F7F {
+    rectangle " " as Main1 #003445
+    rectangle " " as Main2 #004B64
+    rectangle " " as Main3 #00769D
+    rectangle " " as Main4 #00AAE2
   }
     
-  rectangle #EFA63D {
-    rectangle " " as Alt1 #A76607
-    rectangle " " as Alt2 #D68715
-    rectangle " " as Alt3 #FFC063
-    rectangle " " as Alt4 #FFD18D
+  rectangle #00BAC6 {
+    rectangle " " as Alt1 #006B70
+    rectangle " " as Alt2 #00888E
+    rectangle " " as Alt3 #01F4FF
+    rectangle " " as Alt4 #0CF0FB
   }
   
-  rectangle #AA0A7E {
-    rectangle " " as Accent1 #69004C
-    rectangle " " as Accent2 #870262
-    rectangle " " as Accent3 #B72D91
-    rectangle " " as Accent4 #C750A6
+  rectangle #CBDB2A {
+    rectangle " " as Accent1 #818D00
+    rectangle " " as Accent2 #CCDB2A
+    rectangle " " as Accent3 #E0ED51
+    rectangle " " as Accent4 #F0FB7E
   }
 }
 

@@ -1,10 +1,26 @@
+@startuml
+!define COLOR_MAIN #005F7F
+!define COLOR_ALT #00BAC6
+!define COLOR_ACCENT #CBDB2A
+!define COLOR_ERROR #6E1100
+!define COLOR_SUCCESS #009532
+!define COLOR_GRAY #585858
+
+!define PATH_MAIN thickness=3
+!define PATH_COMMON thickness=1
+
+!define errorLabel(x) <color:#CB2000><b>x</b></color>
+!define successLabel(x) <color:#009532><b>x</b></color>
+!define dbLabel(x) <color:#585858><b>x</b></color>
+
 <style>
+
   root {
     FontName Padauk;
     BackgroundColor #FAFAFA;
   }
   component {
-    BackgroundColor #31176B;
+    BackgroundColor #005F7F;
     b1a8d4
     BorderColor #64B5F6;
     FontColor #FAFAFA;
@@ -33,16 +49,16 @@
   }
 
   actor {
-    BackgroundColor #AA0A7D;
+    BackgroundColor #CBDB2A;
     BorderColor #FF9800;
-    FontColor #AA0A7D;
+    FontColor #585858;
     FontSize 14;
     RoundCorner 8;
     Padding 6;
   }
 
   queue {
-    BackgroundColor #EFA63D;
+    BackgroundColor #CBDB2A;
     FontColor #121212;
   }
 
@@ -52,26 +68,20 @@
   }
 
   note {
-    BackgroundColor #AA0A7D;
-    BorderColor #FDD835;
+    BackgroundColor #585858;
+    BorderColor #121212;
     FontColor #FAFAFA;
   }
 
   cloud {
-    LineColor #31176B;
+    LineColor #00BAC6;
   }
 
   frame {
-    LineColor #31176B;
+    LineColor #005F7F;
   }
 
   folder {
-    LineColor #EFA63D;
+    LineColor #00BAC6;
   }
 </style>
-
-!define mp [thickness=3]
-!define err [#E20024]
-!define db [#585858]
-!define errLabel(x) <color:#E20024><b>x</b></color>
-!define dbLabel(x) <color:#585858><b>x</b></color>
