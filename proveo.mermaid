@@ -1,0 +1,36 @@
+%%{init:{
+  "theme":"forest",
+  "themeVariables":{
+    "clusterBkg"        : "#FAFAFA",
+    "fontFamily"        : "Padauk",
+
+    "primaryColor"      : "#005F7F",
+    "primaryBorderColor": "#005F7F",
+    "primaryTextColor"  : "#FAFAFA",
+
+    "secondaryColor"      : "#00BAC6",
+    "secondaryBorderColor": "#00BAC6",
+
+    "tertiaryColor"      : "#CBDB2A",
+    "tertiaryBorderColor": "#CBDB2A",
+
+    "edgeLabelBackground": "#FFF",
+
+    "fontSize"          : "14px"
+  },
+  "themeCSS":" rect{rx:6;ry:6;}"
+}}%%
+
+flowchart TD
+    subgraph Example
+        A([Component A])
+        B([Database])
+        Q([Queue])
+        U([Actor])
+
+        A -- ok --> B
+        A -. async .-> Q
+        U -- main --> A
+        Q -- fail --> A
+    end
+
