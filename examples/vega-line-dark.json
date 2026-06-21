@@ -1,0 +1,322 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Throughput",
+  "width": 380,
+  "height": 240,
+  "data": {
+    "values": [
+      {
+        "t": 0,
+        "service": "web",
+        "value": 120
+      },
+      {
+        "t": 0,
+        "service": "api",
+        "value": 90
+      },
+      {
+        "t": 0,
+        "service": "worker",
+        "value": 55
+      },
+      {
+        "t": 1,
+        "service": "web",
+        "value": 134
+      },
+      {
+        "t": 1,
+        "service": "api",
+        "value": 99
+      },
+      {
+        "t": 1,
+        "service": "worker",
+        "value": 62
+      },
+      {
+        "t": 2,
+        "service": "web",
+        "value": 143
+      },
+      {
+        "t": 2,
+        "service": "api",
+        "value": 105
+      },
+      {
+        "t": 2,
+        "service": "worker",
+        "value": 67
+      },
+      {
+        "t": 3,
+        "service": "web",
+        "value": 145
+      },
+      {
+        "t": 3,
+        "service": "api",
+        "value": 105
+      },
+      {
+        "t": 3,
+        "service": "worker",
+        "value": 68
+      },
+      {
+        "t": 4,
+        "service": "web",
+        "value": 140
+      },
+      {
+        "t": 4,
+        "service": "api",
+        "value": 101
+      },
+      {
+        "t": 4,
+        "service": "worker",
+        "value": 65
+      },
+      {
+        "t": 5,
+        "service": "web",
+        "value": 132
+      },
+      {
+        "t": 5,
+        "service": "api",
+        "value": 95
+      },
+      {
+        "t": 5,
+        "service": "worker",
+        "value": 61
+      },
+      {
+        "t": 6,
+        "service": "web",
+        "value": 124
+      },
+      {
+        "t": 6,
+        "service": "api",
+        "value": 90
+      },
+      {
+        "t": 6,
+        "service": "worker",
+        "value": 57
+      },
+      {
+        "t": 7,
+        "service": "web",
+        "value": 123
+      },
+      {
+        "t": 7,
+        "service": "api",
+        "value": 89
+      },
+      {
+        "t": 7,
+        "service": "worker",
+        "value": 57
+      },
+      {
+        "t": 8,
+        "service": "web",
+        "value": 129
+      },
+      {
+        "t": 8,
+        "service": "api",
+        "value": 92
+      },
+      {
+        "t": 8,
+        "service": "worker",
+        "value": 60
+      },
+      {
+        "t": 9,
+        "service": "web",
+        "value": 142
+      },
+      {
+        "t": 9,
+        "service": "api",
+        "value": 100
+      },
+      {
+        "t": 9,
+        "service": "worker",
+        "value": 66
+      },
+      {
+        "t": 10,
+        "service": "web",
+        "value": 157
+      },
+      {
+        "t": 10,
+        "service": "api",
+        "value": 109
+      },
+      {
+        "t": 10,
+        "service": "worker",
+        "value": 73
+      }
+    ]
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 2.5
+  },
+  "encoding": {
+    "x": {
+      "field": "t",
+      "type": "quantitative",
+      "title": "minute"
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "req / s"
+    },
+    "color": {
+      "field": "service",
+      "type": "nominal",
+      "title": "service"
+    }
+  },
+  "config": {
+    "background": "#062831",
+    "title": {
+      "color": "#00BAC6",
+      "subtitleColor": "#8FB9C2",
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "fontWeight": 700
+    },
+    "view": {
+      "stroke": "transparent",
+      "continuousWidth": 400,
+      "continuousHeight": 300
+    },
+    "arc": {
+      "fill": "#00AAE2"
+    },
+    "area": {
+      "fill": "#00AAE2",
+      "opacity": 0.85
+    },
+    "line": {
+      "stroke": "#00AAE2",
+      "strokeWidth": 2
+    },
+    "path": {
+      "stroke": "#00AAE2"
+    },
+    "trail": {
+      "color": "#00AAE2"
+    },
+    "rect": {
+      "fill": "#00AAE2"
+    },
+    "bar": {
+      "fill": "#00AAE2"
+    },
+    "point": {
+      "fill": "#00AAE2",
+      "filled": true,
+      "size": 60
+    },
+    "circle": {
+      "fill": "#00AAE2"
+    },
+    "square": {
+      "fill": "#00AAE2"
+    },
+    "tick": {
+      "fill": "#00AAE2"
+    },
+    "rule": {
+      "stroke": "#8FB9C2"
+    },
+    "symbol": {
+      "fill": "#00AAE2"
+    },
+    "text": {
+      "color": "#EAF5F3",
+      "fontSize": 12
+    },
+    "axis": {
+      "domainColor": "#8FB9C2",
+      "gridColor": "#1C5567",
+      "tickColor": "#8FB9C2",
+      "labelColor": "#EAF5F3",
+      "titleColor": "#EAF5F3",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#EAF5F3",
+      "titleColor": "#EAF5F3",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "symbolType": "circle"
+    },
+    "header": {
+      "labelColor": "#EAF5F3",
+      "titleColor": "#00BAC6"
+    },
+    "range": {
+      "category": [
+        "#00BAC6",
+        "#CBDB2A",
+        "#00AAE2",
+        "#E0ED51",
+        "#B4B3B3",
+        "#0CF0FB",
+        "#009532",
+        "#CB2000"
+      ],
+      "ordinal": [
+        "#062831",
+        "#00769D",
+        "#00BAC6",
+        "#00AAE2",
+        "#0CF0FB"
+      ],
+      "ramp": [
+        "#062831",
+        "#00769D",
+        "#00BAC6",
+        "#00AAE2",
+        "#0CF0FB"
+      ],
+      "heatmap": [
+        "#062831",
+        "#00769D",
+        "#00BAC6",
+        "#00AAE2",
+        "#0CF0FB"
+      ],
+      "diverging": [
+        "#6E1100",
+        "#CB2000",
+        "#1C5567",
+        "#00AAE2",
+        "#0CF0FB"
+      ]
+    }
+  }
+}

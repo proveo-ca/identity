@@ -1,8 +1,6 @@
-```plantuml
 @startuml
 <style>
   root {
-    FontName Padauk;
     BackgroundColor #FAFAFA;
   }
 </style>
@@ -53,4 +51,3 @@ frame "Shades" {
 }
 
 @enduml
-```

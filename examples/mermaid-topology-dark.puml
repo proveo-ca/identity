@@ -1,0 +1,23 @@
+@startuml
+!include ../proveo-dark.puml
+
+title Proveo theme — service topology
+
+actor     "Operator"             as OP 
+component "apps/web\nDashboard"  as WEB <<app>>
+component "apps/api\nGateway"    as API <<app>>
+queue     "Event Bus"            as BUS <<async>>
+component "Worker"               as WK  <<app>>
+database  "Postgres"             as PG  <<db>>
+cloud     "LLM Vendor"           as LLM <<cloud>>
+component "Dead Letter\nQueue"   as DLQ <<error>>
+
+OP  ARROW_MAIN     WEB : opens
+WEB ARROW_MAIN     API : " ""POST /jobs"" "
+API ARROW_QUEUE    BUS : enqueue
+BUS ARROW_QUEUE    WK  : consume
+WK  ARROW_CLOUD    LLM : call model
+WK  ARROW_MAIN     PG  : persist
+API ARROW_OPTIONAL PG  : cache read
+WK  ARROW_ERROR    DLQ : on failure
+@enduml

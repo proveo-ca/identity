@@ -1,0 +1,15 @@
+@startuml
+!include ../proveo.puml
+
+title Proveo theme — session lifecycle
+
+[*]     ARROW_MAIN     Queued
+Queued  ARROW_QUEUE    Running  : worker picks up
+Running ARROW_CLOUD    Waiting  : awaits LLM
+Waiting ARROW_MAIN     Running  : response
+Running ARROW_MAIN     Done
+Running ARROW_OPTIONAL Paused   : pause
+Paused  ARROW_OPTIONAL Running  : resume
+Running ARROW_ERROR    Failed   : exception
+Done    ARROW_MAIN     [*]
+@enduml
