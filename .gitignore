@@ -1,1 +1,124 @@
-.idea
+# ---- macOS ----
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+Icon?
+
+# ---- Windows / Linux ----
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.directory
+.Trash-*
+.nfs*
+
+# ---- Editors & IDEs ----
+.idea/
+*.iml
+*.iws
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+*.code-workspace
+.fleet/
+.zed/
+*.sublime-workspace
+*.sublime-project
+.nova/
+*.swp
+*.swo
+*~
+.netrwhist
+\#*\#
+.\#*
+.*.kate-swp
+
+# ---- Claude Code / agent local state ----
+.claude/settings.local.json
+.claude/local/
+.claude/state/
+CLAUDE.local.md
+
+# ---- Diagram render output ----
+# Sources live in examples/ and the repo root; curated exports live in assets/.
+# Anything PlantUML / Mermaid / Vega spits out next to a source is disposable.
+examples/**/*.png
+examples/**/*.svg
+examples/**/*.pdf
+examples/**/*.eps
+examples/**/*.txt
+/out/
+/output/
+/build/
+/dist/
+/render/
+/.render/
+*.atxt
+*.utxt
+# Graphviz intermediates PlantUML can leave behind
+*.dot
+*.gv
+plantuml.jar
+.plantuml/
+.puml-cache/
+
+# ---- Node / tooling (if a build or lint step lands here) ----
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/versions
+.yarnrc.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+.stylelintcache
+.parcel-cache/
+.cache/
+.turbo/
+
+# ---- Python (vega/altair or image-diff scripts) ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# ---- Secrets & credentials ----
+*.pem
+*.key
+!**/*.pub
+secrets.*
+.secrets/
+credentials.json
+.direnv/
+
+# ---- Misc scratch ----
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+tmp/
+scratch/

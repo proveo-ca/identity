@@ -194,10 +194,14 @@ skinparam defaultTextAlignment center
     FontColor $BLACK;
     LineColor $ACCENT_1;
   }
+  ' See proveo.puml: a host is a container, so it recedes to a surface and is
+  ' drawn by its border. On the dark canvas the surface is the raised teal rather
+  ' than a light wash, and the border brightens to MAIN_3 so it stays visible
+  ' against it — same intent, same role, inverted ground.
   .host {
-    BackgroundColor $ALT;
-    FontColor $BLACK;
-    LineColor $ALT_1;
+    BackgroundColor $SURFACE;
+    FontColor $INK;
+    LineColor $MAIN_3;
   }
   .cloud {
     BackgroundColor $GRAY_2;

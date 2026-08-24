@@ -17,6 +17,8 @@
 !$GRAY_3   = "#B4B3B3"
 !$GRAY_4   = "#E5E4E4"
 
+!$SURFACE  = "#E9F4F7"
+
 !$MAIN     = "#005F7F"
 !$MAIN_3   = "#00769D"
 !$ALT      = "#00BAC6"
@@ -32,7 +34,7 @@
 ' matching <<stereotype>> (preferred) or use the macros inline.
 '   <<app>>    first-party app / runtime service        MAIN   (teal)
 '   <<async>>  queue / event-driven / background         ACCENT (lime)
-'   <<host>>   host / platform / operator boundary       ALT    (cyan)
+'   <<host>>   host / platform / operator boundary       SURFACE + MAIN border
 '   <<cloud>>  external / third-party / vendor           GRAY_2 (slate)
 '   <<db>>     persistence / state store                 GRAY_4 (light)
 '   <<error>>  failure / destructive / dangerous         ERROR  (red)
@@ -208,10 +210,17 @@ skinparam defaultTextAlignment center
     FontColor $BLACK;
     LineColor $ACCENT_1;
   }
+  ' A host is a CONTAINER, and it nearly always holds <<app>> components. A
+  ' saturated cyan fill put the strongest colour in the diagram behind the
+  ' children it is meant to frame — deep blue on cyan, which reads as a clash
+  ' rather than as nesting. So the boundary recedes to a light surface and is
+  ' drawn by its border instead, leaving the contained components to carry the
+  ' emphasis. The border stays brand blue so the role is still identifiable at a
+  ' glance, and the label takes the same blue rather than black.
   .host {
-    BackgroundColor $ALT;
-    FontColor $BLACK;
-    LineColor $ALT_1;
+    BackgroundColor $SURFACE;
+    FontColor $MAIN;
+    LineColor $MAIN;
   }
   .cloud {
     BackgroundColor $GRAY_2;
