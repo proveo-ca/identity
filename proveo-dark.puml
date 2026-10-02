@@ -78,7 +78,7 @@ skinparam defaultTextAlignment center
 
 <style>
   root {
-    Shadowing false;
+    Shadowing 0;
     FontColor $INK;
     BackgroundColor $BG;
     LineColor $NEUTRAL;
